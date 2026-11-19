@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Cubee</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="start" class="screen">
+  <div class="card">
+    <h1>CUBEE</h1>
+    <label>NAME</label>
+    <input id="name" maxlength="14" placeholder="Ник" autocomplete="off">
+    <label>SKIN</label>
+    <div id="skins"></div>
+    <label>SERVER</label>
+    <div id="servers"></div>
+    <div id="startErr" class="err"></div>
+    <button id="go" class="big">GO</button>
+    <button id="howBtn" class="link">Как играть</button>
+  </div>
+</div>
+
+<div id="how" class="screen hidden">
+  <div class="card">
+    <h2>Как играть</h2>
+    <p><b>WASD / стрелки</b> — движение, <b>W / Space</b> — прыжок (в воде — плыть вверх)</p>
+    <p><b>1–9</b> — слот хотбара, <b>Q</b> — сменить материал блока (слот 4)</p>
+    <p><b>ЛКМ</b> — удар / рубка / добыча / постройка, <b>ПКМ</b> — открыть дверь, печь, собрать урожай</p>
+    <p><b>E</b> — инвентарь и крафт, <b>Enter</b> — чат. Перетащите предмет из инвентаря на соседнего игрока, чтобы передать</p>
+    <p>Собирайте золото, стройте базу, объединяйтесь в альянсы. Ночью опаснее: больше мобов и ловушек. Кирка (слот 7) нужна для камня и золота.</p>
+    <button id="howClose" class="big">OK</button>
+  </div>
+</div>
+
+<div id="hud" class="hidden">
+  <div id="chatBox">
+    <button id="hideChat">HIDE CHAT</button>
+    <div id="chatLog"></div>
+    <input id="chatInput" maxlength="100" placeholder="Enter — написать" autocomplete="off">
+  </div>
+  <div id="lb"></div>
+  <div id="toasts"></div>
+  <div id="hotbar"></div>
+  <div id="res"></div>
+  <div id="btns"><button id="invBtn">INVENTORY (E)</button><button id="allyBtn">ALLIANCE</button></div>
+  <div id="links"><a href="#">MORE .IO GAMES</a> · <a href="#">PRIVACY</a> · <a href="#">DISCORD</a> · <a href="#">TWITTER</a></div>
+
+  <div id="inv" class="win hidden">
+    <h3>INVENTORY</h3>
+    <div id="invGrid"></div>
+    <h3>CRAFT</h3>
+    <div id="craft"></div>
+    <small>Перетащите предмет на игрока рядом (Shift — по 10)</small>
+  </div>
+
+  <div id="furn" class="win hidden">
+    <h3>FURNACE</h3>
+    <div class="row"><span>Руда: <b id="fOre">0</b></span><button id="fPutOre">+ руда</button></div>
+    <div class="row"><span>Топливо: <b id="fFuel">0</b></span><button id="fPutWood">+ дерево</button></div>
+    <div class="bar"><i id="fBar"></i></div>
+    <div class="row"><span>Выход: <b id="fOut">0</b></span><button id="fTake">Забрать золото</button></div>
+    <button id="fClose">Закрыть</button>
+  </div>
+
+  <div id="ally" class="win hidden">
+    <h3>ALLIANCE</h3>
+    <div id="allyCur"></div>
+    <input id="allyName" maxlength="12" placeholder="Название" autocomplete="off">
+    <div class="row"><button id="allyCreate">Создать</button><button id="allyJoin">Вступить</button><button id="allyLeave">Выйти</button></div>
+    <button id="allyClose">Закрыть</button>
+  </div>
+</div>
+
+<div id="death" class="screen hidden">
+  <div class="card"><h2>Вы погибли</h2><p id="deathInfo"></p><button id="respawn" class="big">Возродиться</button></div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

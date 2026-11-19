@@ -1,0 +1,52 @@
+:root{--ink:#222;--card:#fff;--accent:#3a8ee6;--gold:#f5c518}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#7ec8ff;font-family:"Trebuchet MS",Verdana,sans-serif;color:var(--ink);user-select:none}
+canvas#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+.hidden{display:none!important}
+.screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,40,70,.55);z-index:20}
+.card{background:var(--card);border:3px solid var(--ink);border-radius:10px;padding:20px 24px;width:min(420px,92vw);max-height:92vh;overflow:auto;text-align:center}
+.card h1{margin:0 0 8px;font-size:44px;letter-spacing:6px}
+.card label{display:block;margin:12px 0 4px;font-weight:bold;font-size:13px;text-align:left}
+input{width:100%;padding:8px 10px;border:2px solid var(--ink);border-radius:6px;font:inherit;user-select:text}
+button{font:inherit;font-weight:bold;border:2px solid var(--ink);background:#f1f1f1;border-radius:6px;padding:5px 10px;cursor:pointer}
+button:hover{background:#fff}button:focus-visible,input:focus-visible{outline:3px solid var(--accent)}
+button.big{width:100%;margin-top:14px;padding:10px;font-size:20px;background:var(--accent);color:#fff}
+button.link{border:0;background:none;text-decoration:underline;margin-top:6px}
+.err{color:#c0392b;min-height:18px;font-size:14px;margin-top:6px}
+#skins{display:grid;grid-template-columns:repeat(8,1fr);gap:4px}
+#skins canvas{width:100%;aspect-ratio:1;border:2px solid #aaa;border-radius:6px;cursor:pointer;background:#cfeeff}
+#skins canvas.sel{border-color:var(--ink);background:#fff3b0}
+#servers{display:grid;gap:4px}
+#servers button{text-align:left}#servers button.sel{background:var(--accent);color:#fff}
+
+#hud{position:fixed;inset:0;pointer-events:none;z-index:5}
+#hud>*{pointer-events:auto}
+#chatBox{position:absolute;left:10px;top:10px;bottom:auto;width:min(340px,50vw)}
+#chatLog{margin-top:4px;font-size:14px;line-height:1.3;color:#fff;text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;max-height:180px;overflow:hidden}
+#chatInput{margin-top:4px;padding:4px 8px;opacity:.85}
+#chatBox button{font-size:11px;padding:2px 6px}
+#lb{position:absolute;right:10px;top:10px;min-width:170px;background:rgba(0,0,0,.35);color:#fff;border-radius:8px;padding:8px 10px;font-size:14px;pointer-events:none}
+#lb div{display:flex;justify-content:space-between;gap:12px}#lb .me{color:var(--gold);font-weight:bold}
+#toasts{position:absolute;left:50%;top:70px;transform:translateX(-50%);text-align:center;pointer-events:none}
+#toasts div{background:rgba(0,0,0,.65);color:#fff;padding:5px 12px;border-radius:6px;margin-bottom:4px;font-size:14px}
+#hotbar{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:4px}
+.slot{width:54px;height:54px;border:3px solid var(--ink);border-radius:8px;background:rgba(255,255,255,.75);position:relative;cursor:pointer}
+.slot.sel{background:#fff3b0;transform:translateY(-4px)}.slot.dim canvas{opacity:.35}
+.slot canvas{width:100%;height:100%;display:block}
+.slot b{position:absolute;right:3px;bottom:1px;font-size:13px;text-shadow:1px 1px #fff,-1px -1px #fff,1px -1px #fff,-1px 1px #fff}
+.slot i{position:absolute;left:3px;top:0;font-size:11px;font-style:normal;font-weight:bold}
+#res{position:absolute;right:12px;bottom:34px;text-align:right;font-weight:bold;font-size:18px;color:#fff;text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;pointer-events:none}
+#res .g{color:var(--gold)}
+#btns{position:absolute;right:12px;top:200px;display:flex;flex-direction:column;gap:6px}
+#links{position:absolute;right:12px;bottom:8px;font-size:12px;color:#fff;text-shadow:1px 1px 0 #000}
+#links a{color:#fff}
+.win{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border:3px solid var(--ink);border-radius:10px;padding:14px 16px;width:min(420px,94vw);max-height:88vh;overflow:auto}
+.win h3{margin:6px 0}.win small{color:#555}
+.win .row{display:flex;justify-content:space-between;align-items:center;margin:6px 0;gap:8px}
+.win input{margin:6px 0}
+#invGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+#invGrid .slot{width:100%;height:auto;aspect-ratio:1;cursor:grab}
+#craft button{display:block;width:100%;margin:3px 0;text-align:left}#craft button:disabled{opacity:.4;cursor:default}
+.bar{height:10px;border:2px solid var(--ink);border-radius:5px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;width:0;background:var(--gold)}
+@media (max-width:640px){.slot{width:38px;height:38px}#res{font-size:14px}#links{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
